@@ -1,0 +1,35 @@
+<!--
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>LH</title> 
+		</head> 
+		<body> 
+			<h1>I says...</h1> 
+			<div> It's for you from L! <br /> 
+				<strong>{{ boldmessage }}</strong><br /> 
+			</div> 
+			<div> 
+				<a href="/missyou/about">About</a><br /> 
+			</div> 
+		</body> 
+</html> 
+-->
+
+
+<!DOCTYPE html> 
+{% load staticfiles %} <!-- New line --> 
+<html> 
+	<head> 
+		<title>LH</title> 
+	</head> 
+	<body> 
+		<div> It's about love for you!From LH! <br /> 
+			<strong>{{ boldmessage }}</strong><br /> 
+		</div> 
+		<div> 
+			<a href="/missyou">Index</a><br /> 
+			<img src="{% static "images/LH.png" %}" alt="Picture of Our" /> <!-- New line --> 
+		</div> 
+	</body> 
+</html> 
