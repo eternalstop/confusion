@@ -14,4 +14,4 @@ def file_print(path):
         for f in files:
             print (os.path.join(path, f))
 
-file_print(sys.argv[1]) 
+file_print(sys.argv[1])

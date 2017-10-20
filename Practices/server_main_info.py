@@ -16,7 +16,7 @@ CPU核数：cpu_num
 from subprocess import PIPE, Popen
 
 
-def getHostname():
+def gethostname():
     h_dic = {}
     p = Popen('hostname', stdout=PIPE)
     hname = p.stdout.read()
@@ -24,7 +24,7 @@ def getHostname():
     return h_dic
 
 
-def getOs():
+def getos():
     os_list = []
     dic_os = {}
     with open('/etc/issue') as os_info:
@@ -34,13 +34,13 @@ def getOs():
     return dic_os
 
 
-def dmiData():
+def dmidata():
     p = Popen(['dmidecode'], stdout=PIPE)
     data = p.stdout.read()
     return data
 
 
-def parsDmi(data):
+def parsdmi(data):
     lines = []
     line_in = False
     dmi_list = [i for i in data.split('\n') if i]
@@ -56,10 +56,10 @@ def parsDmi(data):
     return lines
 
 
-def getDmi():
-    data = dmiData()
+def getdmi():
+    data = dmidata()
     dmi_dic = {}
-    lines = parsDmi(data)
+    lines = parsdmi(data)
     dmi = dict([i.strip().split(': ')for i in lines])
     dmi_dic['vendor'] = dmi['Manufacturer']
     dmi_dic['Product'] = dmi['Product Name']
@@ -67,7 +67,7 @@ def getDmi():
     return dmi_dic
 
 
-def getMem():
+def getmem():
     total_mem = ''
     dic_mem = {}
     with open('/proc/meminfo') as memfd:
@@ -79,7 +79,7 @@ def getMem():
     return dic_mem
 
 
-def getCpu():
+def getcpu():
     cpumod = ''
     cpucore = []
     dic_cpuinfo = {}
@@ -95,14 +95,14 @@ def getCpu():
     return dic_cpuinfo
 
 
-def getIfconfig():
+def getifconfig():
     p = Popen('ifconfig', stdout=PIPE)
     data_all = p.stdout.read().split('\n\n')
     data_need = [i for i in data_all if i and not i.startswith('lo')]
     return data_need
 
 
-def getIp(data):
+def getip(data):
     dic_need = {}
     for lines in data:
         line_list = lines.split('\n')
@@ -116,13 +116,13 @@ def getIp(data):
 
 if __name__ == "__main__":
     system_dic = {}
-    hostname_dic = getHostname()
-    os_dic = getOs()
-    dmidecode_dic = getDmi()
-    mem_dic = getMem()
-    cpu_dic = getCpu()
-    ip_data = getIfconfig()
-    ip_dic = getIp(ip_data)
+    hostname_dic = gethostname()
+    os_dic = getos()
+    dmidecode_dic = getdmi()
+    mem_dic = getmem()
+    cpu_dic = getcpu()
+    ip_data = getifconfig()
+    ip_dic = getip(ip_data)
     system_dic.update(hostname_dic)
     system_dic.update(os_dic)
     system_dic.update(dmidecode_dic)

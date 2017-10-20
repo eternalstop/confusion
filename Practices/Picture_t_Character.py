@@ -1,5 +1,6 @@
 #!/usr/local/python/bin/python
 # coding=utf-8
+# 彩色转灰度公式：Gray = R*0.299 + G*0.587 + B*0.114
 from PIL import Image
 import argparse
 
