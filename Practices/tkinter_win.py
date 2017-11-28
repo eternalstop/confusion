@@ -1,7 +1,7 @@
 #!/usr/local/python/bin/python
 # coding=utf-8
 
-from Tkinter import *
+from tkinter import *
 
 
 def hello():
@@ -10,9 +10,10 @@ def hello():
 
 win = Tk()
 win.title('hello tkinter')
-win.geometry('200x100')
-btn = Button(win, text='hello', command=hello)
+win.geometry('700x700')
+btn = Button(win, text='查询', command=hello)
 btn.pack(expand=YES, fill=BOTH)
+
 
 if __name__ == '__main__':
 	mainloop()
