@@ -16,6 +16,7 @@ def save(event):
 	test_file.write(temp_txt)
 	test_file.close()
 
+
 app = wx.App()
 win = wx.Frame(None, title="Simple Editor", size=(410, 335))
 bkg = wx.Panel(win)
@@ -33,7 +34,6 @@ h_box = wx.BoxSizer()
 h_box.Add(file_name, proportion=1, flag=wx.EXPAND)
 h_box.Add(load_button, proportion=0, flag=wx.LEFT, border=5)
 h_box.Add(save_button, proportion=0, flag=wx.LEFT, border=5)
-
 v_box = wx.BoxSizer(wx.VERTICAL)
 v_box.Add(h_box, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
 v_box.Add(contents, proportion=1, flag=wx.EXPAND | wx.LEFT | wx.BOTTOM | wx.RIGHT, border=5)
