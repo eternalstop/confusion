@@ -4,6 +4,10 @@ import csv
 import re
 import random
 import difflib
+# import docx
+import string
+import sys
+
 
 test_dic1 = {'a': 1, 'b': 2, 'c': 3}
 test_dic2 = {'e': 4, 'f': 5, 'g': 6}
@@ -65,7 +69,7 @@ def tmp3(data):
 def tmp4():
 	count = 0
 	while True:
-		print(random.choice('/\\'), end='')
+		print(random.choice('/\\'))
 		count += 1
 		if count % 50 == 0:
 			print()
@@ -81,9 +85,31 @@ def tmp5():
 	print(s1[m.a:m.a + m.size], s2[m.b:m.b + m.size])
 
 
-if __name__ == '__main__':
-	tmp5()
+def tmp6(matrix):
+	# matrix[:] = map(list, zip(*matrix[::-1]))
+	matrix[:] = map(list, zip(*matrix[::-1]))
+	return matrix
 
+
+def random_password(digit):
+	aggregate = "123456789!@#$*.,;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	password = "".join(random.sample(aggregate, digit))
+	return password
+
+
+if __name__ == '__main__':
+	print(sys.version)
+
+# if __name__ == '__main__':
+# 	tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# 	print(tmp_list[::-1])
+	# matrix = [
+	# 	[0, 1, 2, 3],
+	# 	[0, 1, 2, 3],
+	# 	[0, 1, 2, 3],
+	# 	[0, 1, 2, 3]
+	# ]
+	# print(tmp6(matrix))
 # tmplist = [1, 2, 3, 4, 5]
 # e1 = enumerate(tmplist, 4)
 # for i in e1:
@@ -92,5 +118,4 @@ if __name__ == '__main__':
 # m = re.findall(r'.*$', s)
 # if m:
 # 	print(m)
-
 

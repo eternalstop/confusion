@@ -3,6 +3,7 @@
 """
 编写一个计算天数的程序:用户从键盘中输入年、月、日，在屏幕中输出此日期是该年的第几天。
 """
+big_month = [1, 3, 5, 7, 8, 10, 12]
 
 
 def judge_year(y):
@@ -19,7 +20,6 @@ def get_day(y, m, d):
 	else:
 		month_2 = 28
 	day_n = 0
-	big_month = [1, 3, 5, 7, 8, 10, 12]
 	for i in range(1, int(m)):
 		if i in big_month:
 			day_n += 31
@@ -41,4 +41,5 @@ def get_data(data):
 if __name__ == '__main__':
 	data = input("请输入要查询的日期，格式xxxx年xx月xx日(例如：1999年9月9日): ")
 	y, m, d = get_data(data)
+	# 判断日期的正确性
 	print(get_day(y, m, d))
