@@ -39,8 +39,7 @@ def r_config(cfile):
 def c_connect(host, port):
 	pool = redis.ConnectionPool(host=host, port=port)
 	client = redis.StrictRedis(connection_pool=pool)
-	# p = client.pipeline()
-	# for i in range(7):
+	# p = client.pipeline()	# for i in range(7):
 	# 	p.lpush(i, i)
 	# p.execute()
 	return client

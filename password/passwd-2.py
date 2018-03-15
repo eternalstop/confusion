@@ -3,14 +3,7 @@
 # a simple database program
 
 import shelve
-import random
-
-
-def random_password(digit):
-	aggregate = "123456789!@#$%^&*.,;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	password = random.choice(aggregate, digit)
-	random.shuffle(password)
-	return password
+import pymysql
 
 
 def store_passwd(db):
@@ -106,6 +99,5 @@ def main(file):
 
 
 if __name__ == '__main__':
-	# filename = 'passwd.dat'
-	# main(filename)
-	print(random_password(10))
+	filename = 'passwd.dat'
+	main(filename)
