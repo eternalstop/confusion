@@ -4,9 +4,11 @@ import csv
 import re
 import random
 import difflib
-# import docx
-import string
+from urllib import request, parse
+import requests
+import os
 import sys
+import time
 
 
 test_dic1 = {'a': 1, 'b': 2, 'c': 3}
@@ -97,8 +99,26 @@ def random_password(digit):
 	return password
 
 
+def path_change(file_path):
+	save_path = file_path.splite("\\")[-1].splite("\.")[0]
+	return save_path
+
+
+def test_uri(uri):
+	header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36',
+	          'Connection': 'keep-alive'}
+	html = requests.head(uri, headers=header)
+	return html.status_code
+
+
 if __name__ == '__main__':
-	print(sys.version)
+	flag = 1
+	while True:
+		test_url = r'http://182.106.140.232:18091/ccms/'
+		status_code = test_uri(test_url)
+		print("第 %s 次访问，这次访问状态码是 %s " % (str(flag), str(status_code)))
+		time.sleep(60)
+		flag += 1
 
 # if __name__ == '__main__':
 # 	tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
