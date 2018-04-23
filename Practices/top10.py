@@ -15,6 +15,7 @@ def get_dic(dirs):
             dic[fn_full] = fn_size
     return dic
 
+
 if __name__ == "__main__":
     top_dic = get_dic(sys.argv[1])
     sorted_dic = sorted(top_dic.iteritems(), key=operator.itemgetter(1), reverse=True)

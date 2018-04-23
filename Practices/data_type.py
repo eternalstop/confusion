@@ -8,4 +8,4 @@ if len(new_last_mac) < 2:
     new_pc_mac = prefix_mac + "-" + "0" + new_last_mac.upper()
 else:
     new_pc_mac = prefix_mac + "-" + new_last_mac.upper()
-print (new_pc_mac)
+print(new_pc_mac)
