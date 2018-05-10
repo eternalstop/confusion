@@ -1,37 +1,28 @@
-temp = {'MsgId': '4515120167880050486',
-        'FromUserName': '@@7f74dcf9c9193f469345137badb65f9218b4666a084680e8252c573ffda3b145',
-        'ToUserName': '@127de5e2fcf5e4d22b2357be4ffe51d9',
-        'MsgType': 1,
-        'Content': '丝丝好惨',
-        'Status': 3,
-        'ImgStatus': 1,
-        'CreateTime': 1524465865,
-        'VoiceLength': 0,
-        'PlayLength': 0,
-        'FileName': '',
-        'FileSize': '',
-        'MediaId': '',
-        'Url': '',
-        'AppMsgType': 0,
-        'StatusNotifyCode': 0,
-        'StatusNotifyUserName': '',
-        'RecommendInfo': {'UserName': '', 'NickName': '', 'QQNum': 0, 'Province': '', 'City': '', 'Content': '', 'Signature': '', 'Alias': '', 'Scene': 0, 'VerifyFlag': 0, 'AttrStatus': 0, 'Sex': 0, 'Ticket': '', 'OpCode': 0},
-        'ForwardFlag': 0,
-        'AppInfo': {'AppID': '', 'Type': 0},
-        'HasProductId': 0,
-        'Ticket': '',
-        'ImgHeight': 0,
-        'ImgWidth': 0,
-        'SubMsgType': 0,
-        'NewMsgId': 4515120167880050486,
-        'OriContent': '',
-        'EncryFileName': '',
-        'ActualNickName': '姜饼人儿',
-        'IsAt': False,
-        'ActualUserName': '@b887c07d6f0d4dc05f61f3b862000baa',
-        'User':
-            <Chatroom:
-				{'MemberList':
-					<ContactList:
-						[<ChatroomMember:
-							{'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@31434a88ccdc85b98cf03f72aa2ec7d6c653f310089e78b95fab699dedc01b86', 'NickName': '锤锤', 'AttrStatus': 104549, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': ''}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@b6a931dce1ed8071b9afc3d7b6aeebec0f9f963d48891464134683364db6fae8', 'NickName': '智障屎', 'AttrStatus': 102437, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': ''}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@eaef7c64855e61f6c139c479cf0cfff72e3409881b4525a4f46aa23937ffbfd7', 'NickName': '龙龙', 'AttrStatus': 69733, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': ''}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@438102854ac4fcf58e8ae5711c59d48c730ac84c0275c814d51214c03091aa9d', 'NickName': '陈秋彤', 'AttrStatus': 98597, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': ''}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@542faddfd361119d91f90e1c4c736a6904413234648b91525f97f40ea5b8ebc2', 'NickName': '嫁给十三间门面', 'AttrStatus': 106429, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': ''}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@bf83ad8324f0678b4edfac55106512d0', 'NickName': '屁屁', 'AttrStatus': 65981, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': 'Zn_'}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@127de5e2fcf5e4d22b2357be4ffe51d9', 'NickName': 'PigPig', 'AttrStatus': 70007, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': 'www'}>, <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@b887c07d6f0d4dc05f61f3b862000baa', 'NickName': '姜饼人儿', 'AttrStatus': 121191, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': 'alv'}>]>, 'Uin': 0, 'UserName': '@@7f74dcf9c9193f469345137badb65f9218b4666a084680e8252c573ffda3b145', 'NickName': '胡店长和他的伙计们', 'HeadImgUrl': '/cgi-bin/mmwebwx-bin/webwxgetheadimg?seq=700474600&username=@@7f74dcf9c9193f469345137badb65f9218b4666a084680e8252c573ffda3b145&skey=', 'ContactFlag': 3, 'MemberCount': 8, 'RemarkName': '', 'HideInputBarFlag': 0, 'Sex': 0, 'Signature': '', 'VerifyFlag': 0, 'OwnerUin': 0, 'PYInitial': 'HDCHTDHJM', 'PYQuanPin': 'hudianchanghetadehuojimen', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'StarFriend': 0, 'AppAccountFlag': 0, 'Statues': 0, 'AttrStatus': 0, 'Province': '', 'City': '', 'Alias': '', 'SnsFlag': 0, 'UniFriend': 0, 'DisplayName': '', 'ChatRoomId': 0, 'KeyWord': '', 'EncryChatRoomId': '@1bd24910932f9d03921933eb89af4826', 'IsOwner': 0, 'IsAdmin': None, 'Self': <ChatroomMember: {'MemberList': <ContactList: []>, 'Uin': 0, 'UserName': '@127de5e2fcf5e4d22b2357be4ffe51d9', 'NickName': 'PigPig', 'AttrStatus': 70007, 'PYInitial': '', 'PYQuanPin': '', 'RemarkPYInitial': '', 'RemarkPYQuanPin': '', 'MemberStatus': 0, 'DisplayName': '', 'KeyWord': 'www'}>}>, 'Type': 'Text', 'Text': '丝丝好惨'}
+#!/usr/local/bin/python
+# coding=utf-8
+from pypinyin import pinyin, lazy_pinyin, Style
+import Pinyin2Hanzi
+from Pinyin2Hanzi import DefaultDagParams
+from Pinyin2Hanzi import dag
+
+
+def pinyin_2_hanzi(word):
+	if Pinyin2Hanzi.is_chinese(word):
+		word_pinyin = lazy_pinyin(word)
+		dagParams = DefaultDagParams()
+		word_list = []
+		result = dag(dagParams, word_pinyin, path_num=3, log=True)
+		for item in result:
+			word_list.append(item.path[0])
+		return word_list
+	else:
+		return "Null"
+
+
+if __name__ == '__main__':
+	print(pinyin_2_hanzi("666"))
+
+
+# print(pinyin('好'))
+# print(lazy_pinyin('好'))
+# print(lazy_pinyin('好'))
