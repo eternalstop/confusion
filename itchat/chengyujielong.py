@@ -29,7 +29,7 @@ def get_chengyu(word):
 		flag = random.randint(0, max_len)
 		return heiheihei[flag]
 	else:
-		return "找不到了，我发红包吧"
+		return 1
 
 
 def find_chengyu(end_str):
@@ -61,4 +61,4 @@ def find_chengyu(end_str):
 
 if __name__ == '__main__':
 	# print(find_chengyu("哈"))
-	print(get_chengyu("淼"))
+	print(get_chengyu("像"))
