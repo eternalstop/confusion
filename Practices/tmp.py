@@ -111,14 +111,17 @@ def test_uri(uri):
 	return html.status_code
 
 
-if __name__ == '__main__':
-	flag = 1
-	while True:
-		test_url = r'http://182.106.140.232:18091/ccms/'
-		status_code = test_uri(test_url)
-		print("第 %s 次访问，这次访问状态码是 %s " % (str(flag), str(status_code)))
-		time.sleep(60)
-		flag += 1
+print(10 % -3)
+print(10 // -3)
+
+# if __name__ == '__main__':
+# 	flag = 1
+# 	while True:
+# 		test_url = r'http://182.106.140.232:18091/ccms/'
+# 		status_code = test_uri(test_url)
+# 		print("第 %s 次访问，这次访问状态码是 %s " % (str(flag), str(status_code)))
+# 		time.sleep(60)
+# 		flag += 1
 
 # if __name__ == '__main__':
 # 	tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
