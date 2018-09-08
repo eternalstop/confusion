@@ -110,10 +110,6 @@ def test_uri(uri):
 	html = requests.head(uri, headers=header)
 	return html.status_code
 
-
-print(10 % -3)
-print(10 // -3)
-
 # if __name__ == '__main__':
 # 	flag = 1
 # 	while True:
@@ -123,16 +119,17 @@ print(10 // -3)
 # 		time.sleep(60)
 # 		flag += 1
 
-# if __name__ == '__main__':
-# 	tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-# 	print(tmp_list[::-1])
-	# matrix = [
-	# 	[0, 1, 2, 3],
-	# 	[0, 1, 2, 3],
-	# 	[0, 1, 2, 3],
-	# 	[0, 1, 2, 3]
-	# ]
-	# print(tmp6(matrix))
+if __name__ == '__main__':
+	# tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+	# # print(tmp_list[::-1])
+	matrix = [
+		[0, 1, 2, 3],
+		[0, 1, 2, 3],
+		[0, 1, 2, 3],
+		[0, 1, 2, 3]
+	]
+	a = 1 > 0
+	print(a)
 # tmplist = [1, 2, 3, 4, 5]
 # e1 = enumerate(tmplist, 4)
 # for i in e1:
@@ -141,4 +138,3 @@ print(10 // -3)
 # m = re.findall(r'.*$', s)
 # if m:
 # 	print(m)
-
