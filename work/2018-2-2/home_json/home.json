@@ -1,0 +1,69 @@
+﻿{
+  "leftBigImg":[
+    {
+	 "channel":2,
+     "imgUrl":"home-big-1.jpg",
+	 "verticalImgUrl":"pic4683699.jpg",
+     "name":"唱童谣学汉字",
+     "mediaCode":"5285703",
+	 "childInfo":[
+{
+"mediaCode":"5285760"
+},
+{
+"mediaCode":"5285765"
+}
+     ]
+    }
+],
+
+"leftSmallImg":[
+{
+	 "channel":2,
+     "imgUrl":"home-small-1.jpg",
+	 "verticalImgUrl":"pic4618327.jpg",
+     "name":"超级飞侠3",
+     "mediaCode":"5219042",
+	 "childInfo":[
+{
+"mediaCode":"5221022"
+},
+{
+"mediaCode":"5221028"
+}
+     ]
+    }
+],
+ "smallImg":[
+    {
+	 "channel":2,
+     "imgUrl":"home-small-3.jpg",
+	 "verticalImgUrl":"pic4667940.jpg",
+     "name":"小普林变变变第一季",
+     "mediaCode":"5269450",
+	 "childInfo":[
+{
+"mediaCode":"5269596"
+},
+{
+"mediaCode":"5269594"
+}
+     ]
+    },
+    {
+	 "channel":2,
+     "imgUrl":"home-small-5.jpg",
+	 "verticalImgUrl":"pic4683711.jpg",
+     "name":"成语寓言故事",
+     "mediaCode":"5285922",
+	 "childInfo":[
+{
+"mediaCode":"5285938"
+},
+{
+"mediaCode":"5285950"
+}
+     ]
+    }
+]
+}
