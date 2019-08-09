@@ -25,7 +25,7 @@ def getid(vodcmsid):
 
 
 if __name__ == '__main__':
-	with open(r'output.txt', 'w') as fd:
+	with open(r'videoPro.txt', 'w') as fd:
 		a=[]
 		text=open('list.txt', 'r').readlines()
 		total=len(text)

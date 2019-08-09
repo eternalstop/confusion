@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('file')
 # 输入文件
-parser.add_argument('-o', '--output')
+parser.add_argument('-o', '--videoPro')
 # 输出文件
 parser.add_argument('--width', type=int, default=80)
 # 输出字符画宽
@@ -59,5 +59,5 @@ if __name__ == '__main__':
         with open(OUTPUT, 'w') as f:
             f.write(txt)
     else:
-        with open("output.txt", 'w') as f:
+        with open("videoPro.txt", 'w') as f:
             f.write(txt)

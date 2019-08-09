@@ -27,7 +27,7 @@ for ulist in img_url:
 	urllib.urlretrieve(ulist, r'C:\Users\ty\Documents\English class\major 5\%s.jpg' % x)
 	x += 1
 	# print(ulist['U'])
-	# play_output = open('output/playurl.txt', 'a')
+	# play_output = open('videoPro/playurl.txt', 'a')
 	# play_output.write(ulist['U'])
 	# play_output.write("\n")
 	# play_output.close()

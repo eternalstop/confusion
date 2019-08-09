@@ -6,14 +6,14 @@ import pandas as pd
 
 
 def play():
-	blue_list = [random.randrange(1, 17)]
-	red_list = []
+	blue_list = [i for i in range(1, 17)]
+	red_list = [j for j in range(1, 33)]
 	tmp_dic = {}
 	ball_dic = {}
-	for i in range(6):
-		red_list.append(random.randrange(1, 34))
-	tmp_dic['red'] = red_list
-	tmp_dic['blue'] = blue_list
+	red = random.sample(red_list, 6)
+	blue = random.sample(blue_list, 1)
+	tmp_dic['red'] = red
+	tmp_dic['blue'] = blue
 	ball_dic['ball'] = tmp_dic
 	return ball_dic
 

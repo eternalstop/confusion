@@ -1,4 +1,0 @@
-﻿  test.c
-m:\python pro\practices\test\consoleapplication1\test.c(37): warning C4013: “gets”未定义；假设外部返回 int
-  ConsoleApplication1.vcxproj -> M:\Python Pro\Practices\test\Debug\ConsoleApplication1.exe
-  ConsoleApplication1.vcxproj -> M:\Python Pro\Practices\test\Debug\ConsoleApplication1.pdb (Full PDB)

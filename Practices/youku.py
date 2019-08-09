@@ -32,10 +32,10 @@ def get_play(play_html):
 # for videourl in urllist:
 # 	videourl = "http:" + videourl.split()[0].split('"')[1]
 # 	flvcdurl = "http://vpstream.5233game.com/parse_pc.php?url=" + videourl + "&format=super"
-# 	output = open('output/urllist.txt', 'a')
-# 	output.write(flvcdurl)
-# 	output.write("\n")
-# 	output.close()
+# 	videoPro = open('videoPro/urllist.txt', 'a')
+# 	videoPro.write(flvcdurl)
+# 	videoPro.write("\n")
+# 	videoPro.close()
 
 
 play_url = urllib.urlopen('http://vpstream.5233game.com/parse_pc.php?' +
@@ -43,7 +43,7 @@ play_url = urllib.urlopen('http://vpstream.5233game.com/parse_pc.php?' +
 play_json = json.load(play_url)['V']
 for ulist in play_json:
 	# print(ulist['U'])
-	play_output = open('output/playurl.txt', 'a')
+	play_output = open('videoPro/playurl.txt', 'a')
 	play_output.write(ulist['U'])
 	play_output.write("\n")
 	play_output.close()
