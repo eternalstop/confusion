@@ -76,7 +76,7 @@ def getDic(file):
 
 
 if __name__ == '__main__':
-	# excel_file = r"E:\Codes\Python\confusion\work\2018-2-2\list_json\list-2\list-2.xlsx"
+	# excel_file = r"E:\Codes\Python\confusion\work\getjson\list_json\list-2\list-2.xlsx"
 	# excel_file = input("请输入完整的文件路径： ")
 	excel_file = sys.argv[1]
 	if not os.path.exists(excel_file):

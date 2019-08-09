@@ -52,9 +52,6 @@ Modify:
 
 
 def hero_list(event):
-	# print('*' * 100)
-	# print('\t\t\t\t欢迎使用《王者荣耀》出装助手！')
-	# print('*' * 100)
 	hero_str = ''
 	hero_str += '*' * 170 + '\n'
 	hero_str += '\t\t\t\t\t\t欢迎使用《王者荣耀》出装助手！\n'
@@ -63,10 +60,8 @@ def hero_list(event):
 	flag = 0
 	for each_hero in req['list']:
 		flag += 1
-		# print('%s的ID为:%-7s' % (each_hero['name'], each_hero['hero_id']), end='\t\t')
 		hero_str += '%s的ID为:%-5s' % (each_hero['name'], each_hero['hero_id']) + '\t\t'
 		if flag == 5:
-			# print('\n', end='')
 			hero_str += '\n\n'
 			flag = 0
 	contents.SetValue(hero_str)
@@ -143,24 +138,19 @@ def hero_info(event):
 	           "pdunid=a83d20d8".format(hero_id.GetValue())
 	req = requests.get(url=hero_url, headers=headers).json()
 	all_str = ''
-	# print('\n历史上的%s:\n    %s' % (req['info']['name'], req['info']['history_intro']))
 	all_str = '\n历史上的%s:\n    %s' % (req['info']['name'], req['info']['history_intro'])
 	for each_equip_choice in req['info']['equip_choice']:
-		# print('\n%s:\n   %s' % (each_equip_choice['title'], each_equip_choice['description']))
 		all_str += '\n%s:\n   %s' % (each_equip_choice['title'], each_equip_choice['description']) +'\n'
 		total_price = 0
 		flag = 0
 		for each_weapon in each_equip_choice['list']:
 			flag += 1
 			weapon_name, weapon_price = seek_weapon(each_weapon['equip_id'], weapon_info_dict)
-			# print('%s:%s' % (weapon_name, weapon_price), end='\t')
 			all_str += '%s:%s' % (weapon_name, weapon_price)
 			if flag == 3:
-				# print('\n', end='')
 				all_str += '\n'
 				flag = 0
 			total_price += int(weapon_price)
-		# print('神装套件价格共计:%d' % total_price)
 		all_str += '神装套件价格共计:%d' % total_price +'\n'
 	contents.SetValue(all_str)
 
@@ -189,6 +179,7 @@ def hero_weapon(url, header):
 
 def load(event):
 	contents.SetValue('test %s' % hero_id.GetValue())
+
 
 headers = {
 	'Accept-Charset': 'UTF-8',
@@ -247,7 +238,6 @@ heros_url = "http://gamehelper.gm825.com/wzry/hero/list?" \
 			"dpi=480&" \
 			"client_ip=192.168.0.198&" \
 			"pdunid=a83d20d8"
-# hero_id = input("请输入要查询的英雄ID:")
 
 app = wx.App()
 win = wx.Frame(None, title="英雄查询", size=(900, 700))
@@ -256,38 +246,11 @@ bkg = wx.Panel(win)
 
 hero_id = wx.TextCtrl(bkg)
 contents = wx.TextCtrl(bkg, style=wx.TE_MULTILINE | wx.HSCROLL)
-# hero_url = "http://gamehelper.gm825.com/wzry/hero/detail?" \
-# 		   "hero_id={}&" \
-# 		   "channel_id=90009a&" \
-# 		   "app_id=h9044j&" \
-# 		   "game_id=7622&" \
-# 		   "game_name=%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80&" \
-# 		   "vcode=12.0.3&" \
-# 		   "version_code=1203&" \
-# 		   "cuid=2654CC14D2D3894DBF5808264AE2DAD7&" \
-# 		   "ovr=6.0.1&" \
-# 		   "device=Xiaomi_MI+5&" \
-# 		   "net_type=1&" \
-# 		   "client_id=1Yfyt44QSqu7PcVdDduBYQ%3D%3D&" \
-# 		   "info_ms=fBzJ%2BCu4ZDAtl4CyHuZ%2FJQ%3D%3D&" \
-# 		   "info_ma=XshbgIgi0V1HxXTqixI%2BKbgXtNtOP0%2Fn1WZtMWRWj5o%3D&" \
-# 		   "mno=0&info_la=9AChHTMC3uW%2BfY8%2BCFhcFw%3D%3D&" \
-# 		   "info_ci=9AChHTMC3uW%2BfY8%2BCFhcFw%3D%3D&" \
-# 		   "mcc=0&" \
-# 		   "clientversion=&" \
-# 		   "bssid=VY%2BeiuZRJ%2FwaXmoLLVUrMODX1ZTf%2F2dzsWn2AOEM0I4%3D&" \
-# 		   "os_level=23&" \
-# 		   "os_id=dc451556fc0eeadb&" \
-# 		   "resolution=1080_1920&" \
-# 		   "dpi=480&" \
-# 		   "client_ip=192.168.0.198&" \
-# 		   "pdunid=a83d20d8".format(hero_id)
 weapon_info_dict = hero_weapon(weapon_url, headers)
 id_button = wx.Button(bkg, label='查看英雄ID')
 id_button.Bind(wx.EVT_BUTTON, hero_list)
 hero_button = wx.Button(bkg, label='查询英雄')
 hero_button.Bind(wx.EVT_BUTTON, hero_info)
-# load_button.Bind(wx.EVT_BUTTON, load)
 
 h_box = wx.BoxSizer()
 h_box.Add(hero_id, proportion=1, flag=wx.EXPAND)

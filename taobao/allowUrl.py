@@ -36,3 +36,6 @@ def getAllow():
 	return allowDict
 
 
+print(getAllow())
+
+

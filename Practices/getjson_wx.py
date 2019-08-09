@@ -75,7 +75,7 @@ def getDic(file):
 
 
 def getJson(event):
-	# excel_file = r"E:\Codes\Python\confusion\work\2018-2-2\list_json\list-3\list-3.xlsx"
+	# excel_file = r"E:\Codes\Python\confusion\work\getjson\list_json\list-3\list-3.xlsx"
 	# excel_file = sys.argv[1]
 	excel_file = file_path.GetValue()
 	if os.path.exists(excel_file):

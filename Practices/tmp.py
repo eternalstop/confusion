@@ -9,6 +9,7 @@ import requests
 import os
 import sys
 import time
+import math
 
 
 test_dic1 = {'a': 1, 'b': 2, 'c': 3}
@@ -119,17 +120,23 @@ def test_uri(uri):
 # 		time.sleep(60)
 # 		flag += 1
 
+
+def test_factorial(x):
+	value = math.factorial(x)
+	return value
+
+
 if __name__ == '__main__':
 	# tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 	# # print(tmp_list[::-1])
-	matrix = [
-		[0, 1, 2, 3],
-		[0, 1, 2, 3],
-		[0, 1, 2, 3],
-		[0, 1, 2, 3]
-	]
-	a = 1 > 0
-	print(a)
+	# matrix = [
+	# 	[0, 1, 2, 3],
+	# 	[0, 1, 2, 3],
+	# 	[0, 1, 2, 3],
+	# 	[0, 1, 2, 3]
+	# ]
+	# a = 1 > 0
+	print(test_factorial(3))
 # tmplist = [1, 2, 3, 4, 5]
 # e1 = enumerate(tmplist, 4)
 # for i in e1:

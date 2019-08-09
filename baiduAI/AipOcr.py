@@ -22,7 +22,7 @@ def get_file_content(img):
 
 
 if __name__ == '__main__':
-	image = r'D:\图片\baidu\2.jpg'
+	image = r'D:\图片\Saved Pictures\5G11.png'
 	results = get_txt(get_file_content(image))
 	results_list = results['words_result']
 	for i in results_list:
