@@ -8,65 +8,53 @@ import execjs
 import re
 import random
 
-data = {
-	"tqsl": '50',
-	"radio": "radio",
-	"submit": "提  取"
-}
-
-proxy_api = "http://www.66ip.cn/mo.php?"
-proxy_api = proxy_api + parse.urlencode(data, encoding="gb2312")
-
-
-def getHtml(url, cookie=None):
-	headers = {
-		"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-		"Accept-Encoding": "gzip, deflate",
-		"Accept-Language": "zh-CN,zh;q=0.9",
-		"Cache-Control": "max-age=0",
-		"Connection": "keep-alive",
-		"Host": "www.66ip.cn",
-		"Referer": "http://www.66ip.cn/pt.html",
-		"Upgrade-Insecure-Requests": "1",
-		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
-	}
-	html = requests.get(url=url, headers=headers, timeout=30, cookies=cookie).content
-	return html
-
-
-def executeJS(js_func_string, arg):
-	ctx = execjs.compile(js_func_string)
-	func_name = js_func_string.split()[1].split("(")[0]
-	return ctx.call(func_name, arg)
-
-
-def parseCookie(string):
-	string = string.replace("document.cookie='", "")
-	clearance = string.split(';')[0]
-	return {clearance.split('=')[0]: clearance.split('=')[1]}
-
 
 def testProxy(proxy):
 	try:
-		r = requests.get(url="http://music.163.com", proxies=proxy, timeout=5)
+		r = requests.get(url="http://music.163.com/", proxies=proxy, timeout=5)
 		return r.status_code
 	except:
 		return 500
 
 
-def getProxy():
-	first_html = getHtml(proxy_api)
-	js_func = ''.join(re.findall(r'(function .*?)</script>', str(first_html)))
-	js_arg = ''.join(re.findall(r'setTimeout\(\"\D+\((\d+)\)\"', str(first_html)))
-	js_func = js_func.replace('eval("qo=eval;qo(po);")', 'return po')
-	cookie_str = executeJS(js_func, js_arg)
-	cookie = parseCookie(cookie_str)
-	fin_html = getHtml(proxy_api, cookie=cookie)
-	soup = BeautifulSoup(fin_html, "lxml")
-	# print(soup)
-	temp_res = soup.find("p").get_text()
-	ip_list = temp_res.split()[:-6]
-	return ip_list
+def getProxyPool():
+	proxy_api = "https://www.kuaidaili.com/free/inha/{}"
+	url_list = [proxy_api.format(i) for i in range(1, 6)]
+	url = random.choice(url_list)
+	headers = {
+		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
+	}
+	html = requests.get(url=url, headers=headers, timeout=30).text
+	soup = BeautifulSoup(html, 'lxml')
+	content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
+	contents = []
+	for i in range(0, len(content), 3):
+		tmplist = content[i: i + 3]
+		tmpdict = {
+			'IP': re.split('<|>', str(tmplist[0]))[2],
+			'PORT': re.split('<|>', str(tmplist[1]))[2],
+			'LOCATION': re.split('<|>', str(tmplist[2]))[2]
+		}
+		contents.append(tmpdict)
+	return contents
+
+
+def getProxy(pool):
+	while True:
+		random_choice = random.choice(pool)
+		proxies = {"http": random_choice["IP"] + ":" + random_choice['PORT']}
+		status = testProxy(proxies)
+		if status == 200:
+			pool.remove(random_choice)
+			# if len(pool) == 0:
+			# 	pool = getProxyPool()
+			break
+		else:
+			pool.remove(random_choice)
+			if len(pool) == 0:
+				pool = getProxyPool()
+			continue
+	return proxies
 
 
 def totalPage(emotions):
@@ -80,17 +68,15 @@ def totalPage(emotions):
 
 
 def getData(urls, proxy):
-	preUrl = 'http://music.163.com'
+	preUrl = 'https://music.163.com'
 	headers = {
-		'Referer': 'http://music.163.com/',
-		'Host': 'music.163.com',
-		# 'User-Agent': 'Mozilla/5.0 (X11: Linux *86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.3.0',
-		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
-		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+		'referer': 'https://music.163.com/',
+		"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36",
+		'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
 	}
-	print(proxy)
 	try:
 		r = requests.get(urls, headers=headers, proxies=proxy)
+		print(r.text)
 		html = etree.HTML(r.text)
 		MFlist = html.xpath("//p[@class='dec']/a/text()")
 		MFurl = html.xpath("//p[@class='dec']/a/@href")
@@ -107,7 +93,9 @@ def getData(urls, proxy):
 
 def listDb(name, url, hot, label):
 	# connect mysql
-	db = pymysql.connect(host="localhost", user="root", passwd="lucky", db="music163",
+	# db = pymysql.connect(host="localhost", user="root", passwd="lucky", db="music163",
+	#                      charset="utf8")
+	db = pymysql.connect(host="10.102.27.125", user="music", passwd="tysx@tv189", db="music163",
 	                     charset="utf8")
 	# get cursor by cursor()
 	cursor = db.cursor()
@@ -136,23 +124,9 @@ def listDb(name, url, hot, label):
 if __name__ == '__main__':
 	emotion = ['怀旧', '清新', '浪漫', '性感', '伤感', '治愈', '放松', '孤独', '感动', '兴奋', '快乐', '安静', '思念']
 	all_url = totalPage(emotion)
-	proxy_pool = getProxy()
+	proxy_pool = getProxyPool()
+	proxies = getProxy(proxy_pool)
 	for eve_url in all_url:
-		while True:
-			if len(proxy_pool) == 0:
-				proxy_pool = getProxy()
-			random_ip = random.choice(proxy_pool)
-			proxies = {"http": random_ip}
-			status = testProxy(proxies)
-			if status == 200:
-				return_data = getData(eve_url, proxies)
-				if return_data == "Success":
-					proxy_pool.remove(random_ip)
-					break
-				else:
-					proxy_pool.remove(random_ip)
-					continue
-			else:
-				proxy_pool.remove(random_ip)
-				continue
-
+		return_data = getData(eve_url, proxies)
+		print(return_data)
+		break
