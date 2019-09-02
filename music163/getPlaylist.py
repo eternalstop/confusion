@@ -2,19 +2,9 @@ from lxml import etree
 import requests
 # import time
 import pymysql
-from urllib import parse
 from bs4 import BeautifulSoup
-import execjs
 import re
 import random
-
-
-def testProxy(proxy):
-	try:
-		r = requests.get(url="http://music.163.com/", proxies=proxy, timeout=5)
-		return r.status_code
-	except:
-		return 500
 
 
 def getProxyPool():
@@ -39,22 +29,18 @@ def getProxyPool():
 	return contents
 
 
-def getProxy(pool):
-	while True:
-		random_choice = random.choice(pool)
-		proxies = {"http": random_choice["IP"] + ":" + random_choice['PORT']}
-		status = testProxy(proxies)
-		if status == 200:
-			pool.remove(random_choice)
-			# if len(pool) == 0:
-			# 	pool = getProxyPool()
+def testProxy(proxy_pool):
+	global status, proxy
+	for eve in proxy_pool:
+		proxy = {'http': eve['IP'] + ":" + eve['PORT']}
+		try:
+			r = requests.get(url="http://music.163.com/", proxies=proxy, timeout=5)
+			status = r.status_code
 			break
-		else:
-			pool.remove(random_choice)
-			if len(pool) == 0:
-				pool = getProxyPool()
+		except:
+			status = 500
 			continue
-	return proxies
+	return status, proxy
 
 
 def totalPage(emotions):
@@ -76,7 +62,6 @@ def getData(urls, proxy):
 	}
 	try:
 		r = requests.get(urls, headers=headers, proxies=proxy)
-		print(r.text)
 		html = etree.HTML(r.text)
 		MFlist = html.xpath("//p[@class='dec']/a/text()")
 		MFurl = html.xpath("//p[@class='dec']/a/@href")
@@ -122,11 +107,12 @@ def listDb(name, url, hot, label):
 
 
 if __name__ == '__main__':
+	ppool = getProxyPool()
 	emotion = ['怀旧', '清新', '浪漫', '性感', '伤感', '治愈', '放松', '孤独', '感动', '兴奋', '快乐', '安静', '思念']
 	all_url = totalPage(emotion)
-	proxy_pool = getProxyPool()
-	proxies = getProxy(proxy_pool)
 	for eve_url in all_url:
+		status, proxies = testProxy(ppool)
 		return_data = getData(eve_url, proxies)
 		print(return_data)
-		break
+		# break
+

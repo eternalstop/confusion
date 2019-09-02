@@ -7,54 +7,45 @@ import random
 
 
 def getProxyPool():
-	proxy_api = "https://www.kuaidaili.com/free/inha/{}"
-	url_list = [proxy_api.format(i) for i in range(1, 6)]
-	url = random.choice(url_list)
+	contents = []
+	proxy_api = "https://www.kuaidaili.com/free/inha/{}/"
+	url_list = [proxy_api.format(i) for i in [1, 100]]
 	headers = {
 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
 	}
-	html = requests.get(url=url, headers=headers, timeout=30).text
-	soup = BeautifulSoup(html, 'lxml')
-	content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
-	contents = []
-	for i in range(0, len(content), 3):
-		tmplist = content[i: i + 3]
-		tmpdict = {
-			'IP': re.split('<|>', str(tmplist[0]))[2],
-			'PORT': re.split('<|>', str(tmplist[1]))[2],
-			'LOCATION': re.split('<|>', str(tmplist[2]))[2]
-		}
-		contents.append(tmpdict)
+	for url in url_list:
+		print(url)
+		html = requests.get(url=url, headers=headers, timeout=30).text
+		soup = BeautifulSoup(html, 'lxml')
+		content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
+		for i in range(0, len(content), 3):
+			tmplist = content[i: i + 3]
+			tmpdict = {
+				'IP': re.split('<|>', str(tmplist[0]))[2],
+				'PORT': re.split('<|>', str(tmplist[1]))[2],
+				'LOCATION': re.split('<|>', str(tmplist[2]))[2]
+			}
+			contents.append(tmpdict)
+		print(contents)
 	return contents
-	
-	
-def getProxy(pool):
-	while True:
-		random_choice = random.choice(pool)
-		proxies = {"http": random_choice["IP"] + ":" + random_choice['PORT']}
-		status = testProxy(proxies)
-		if status == 200:
-			pool.remove(random_choice)
-			# if len(pool) == 0:
-			# 	pool = getProxyPool()
+
+
+def testProxy(proxy_pool):
+	global proxy, status
+	for eve in proxy_pool:
+		proxy = {'http': eve['IP'] + ":" + eve['PORT']}
+		try:
+			r = requests.get(url="http://music.163.com/", proxies=proxy, timeout=5)
+			status = r.status_code
 			break
-		else:
-			pool.remove(random_choice)
-			if len(pool) == 0:
-				pool = getProxyPool()
+		except:
+			status = 500
 			continue
-	return proxies
-
-
-def testProxy(proxy):
-	try:
-		r = requests.get(url="http://music.163.com/", proxies=proxy, timeout=5)
-		return r.status_code
-	except:
-		return 500
-
+	return status, proxy
+	
 
 if __name__ == '__main__':
-	proxy_pool = getProxyPool()
-	proxy = getProxy(proxy_pool)
-	print(proxy)
+	ppool = getProxyPool()
+	print(ppool)
+	# print(testProxy(ppool))
+
