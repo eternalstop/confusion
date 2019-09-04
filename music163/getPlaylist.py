@@ -1,31 +1,43 @@
+# _*_coding:utf-8_*_
 from lxml import etree
 import requests
 # import time
 import pymysql
 from bs4 import BeautifulSoup
 import re
-import random
+import time
 
 
 def getProxyPool():
-	proxy_api = "https://www.kuaidaili.com/free/inha/{}"
+	proxy_api = "https://www.kuaidaili.com/free/inha/{}/"
 	url_list = [proxy_api.format(i) for i in range(1, 6)]
-	url = random.choice(url_list)
+	contents = []
 	headers = {
+		"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+		"Accept-Encoding": "gzip,deflate,br",
+		"Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+		"Connection": "keep-alive",
+		"Host": "www.kuaidaili.com",
 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
 	}
-	html = requests.get(url=url, headers=headers, timeout=30).text
-	soup = BeautifulSoup(html, 'lxml')
-	content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
-	contents = []
-	for i in range(0, len(content), 3):
-		tmplist = content[i: i + 3]
-		tmpdict = {
-			'IP': re.split('<|>', str(tmplist[0]))[2],
-			'PORT': re.split('<|>', str(tmplist[1]))[2],
-			'LOCATION': re.split('<|>', str(tmplist[2]))[2]
-		}
-		contents.append(tmpdict)
+	for url in url_list:
+		try:
+			html = requests.get(url=url, headers=headers, timeout=5).text
+			soup = BeautifulSoup(html, 'lxml')
+			# content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
+			content = soup.tbody
+			for evetr in content.find_all('tr'):
+				tmplist = list(evetr)
+				tmpdict = {
+					'IP': re.split('<|>', str(tmplist[1]))[2],
+					'PORT': re.split('<|>', str(tmplist[3]))[2],
+					'LOCATION': re.split('<|>', str(tmplist[9]))[2],
+					'TRYTIME': re.split('<|>', str(tmplist[13]))[2]
+				}
+				contents.append(tmpdict)
+		except:
+			continue
+		time.sleep(3)
 	return contents
 
 
@@ -73,6 +85,9 @@ def getData(urls, proxy):
 			listDb(MFlist[i], preUrl + MFurl[i], LisNum[i], label)
 		return "Success"
 	except:
+		with open('error.txt', 'a') as f:
+			f.write(urls)
+			f.write('\n')
 		return "Error"
 
 
@@ -108,8 +123,10 @@ def listDb(name, url, hot, label):
 
 if __name__ == '__main__':
 	ppool = getProxyPool()
-	emotion = ['怀旧', '清新', '浪漫', '性感', '伤感', '治愈', '放松', '孤独', '感动', '兴奋', '快乐', '安静', '思念']
-	all_url = totalPage(emotion)
+	emotion = ['伤感', '治愈', '放松', '孤独', '感动', '兴奋', '快乐', '安静', '思念']
+	# emotion = ['怀旧', '清新', '浪漫', '性感', '伤感', '治愈', '放松', '孤独', '感动', '兴奋', '快乐', '安静', '思念']
+	# all_url = totalPage(emotion)
+	all_url = ['http://music.163.com/discover/playlist/?order=hot&cat=浪漫&limit=35&offset=945']
 	for eve_url in all_url:
 		status, proxies = testProxy(ppool)
 		return_data = getData(eve_url, proxies)
