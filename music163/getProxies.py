@@ -3,30 +3,39 @@
 import re
 import requests
 from bs4 import BeautifulSoup
-import random
+import time
 
 
 def getProxyPool():
-	contents = []
 	proxy_api = "https://www.kuaidaili.com/free/inha/{}/"
-	url_list = [proxy_api.format(i) for i in [1, 100]]
+	url_list = [proxy_api.format(i) for i in range(1, 6)]
+	contents = []
 	headers = {
+		"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+		"Accept-Encoding": "gzip,deflate,br",
+		"Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+		"Connection": "keep-alive",
+		"Host": "www.kuaidaili.com",
 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
 	}
 	for url in url_list:
-		print(url)
-		html = requests.get(url=url, headers=headers, timeout=30).text
-		soup = BeautifulSoup(html, 'lxml')
-		content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
-		for i in range(0, len(content), 3):
-			tmplist = content[i: i + 3]
-			tmpdict = {
-				'IP': re.split('<|>', str(tmplist[0]))[2],
-				'PORT': re.split('<|>', str(tmplist[1]))[2],
-				'LOCATION': re.split('<|>', str(tmplist[2]))[2]
-			}
-			contents.append(tmpdict)
-		print(contents)
+		try:
+			html = requests.get(url=url, headers=headers, timeout=5).text
+			soup = BeautifulSoup(html, 'lxml')
+			# content = soup.find_all('td', attrs={'data-title': re.compile("IP|PORT|位置")})
+			content = soup.tbody
+			for evetr in content.find_all('tr'):
+				tmplist = list(evetr)
+				tmpdict = {
+					'IP': re.split('<|>', str(tmplist[1]))[2],
+					'PORT': re.split('<|>', str(tmplist[3]))[2],
+					'LOCATION': re.split('<|>', str(tmplist[9]))[2],
+					'TRYTIME': re.split('<|>', str(tmplist[13]))[2]
+				}
+				contents.append(tmpdict)
+		except:
+			continue
+		time.sleep(3)
 	return contents
 
 
@@ -42,10 +51,9 @@ def testProxy(proxy_pool):
 			status = 500
 			continue
 	return status, proxy
-	
+
 
 if __name__ == '__main__':
 	ppool = getProxyPool()
 	print(ppool)
-	# print(testProxy(ppool))
-
+# print(testProxy(ppool))
