@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import time
 
 
 def getHtml(headers, url):
@@ -40,7 +41,7 @@ def getInfo(link, phone):
 		"Accept-Encoding": "gzip,deflate",
 		"Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
 		"Connection": "keep-alive",
-		"Host": "fzxzgy.dh.cx",
+		# "Host": "fzxzgy.dh.cx",
 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
 	}
 	for url in link:
@@ -51,10 +52,12 @@ def getInfo(link, phone):
 		all_info = content.find_all('li')
 		for info in all_info:
 			info_dict[info.strong.contents[0]] = info.contents[1].strip("：").strip()
+		info_dict["链接"] = url
 		info_dict["快递公司"] = compony
 		info_dict["电话"] = phone
 		info_list.append(info_dict)
-		return info_list
+		time.sleep(1)
+	return info_list
 		
 
 def getLink(apilist):
@@ -80,8 +83,12 @@ def getLink(apilist):
 
 
 if __name__ == '__main__':
-	test_link = ['http://fzxzgy.dh.cx/c2d52/18655660717/0']
-	# home_url = "http://fzxzgy.dh.cx/"
+	# test_link = ['http://fzxzgy.dh.cx/c2d52/18655660717/0']
+	check_api = "http://apis.dh.cx/query/json"
+	home_url = "http://fzxzgy.dh.cx/"
 	phonenum = '18655660717'
-	# all_api = getAllOrder(home_url, phonenum)
-	print(getInfo(test_link, phonenum))
+	all_api = getAllOrder(home_url, phonenum)
+	all_link = getLink(all_api)
+	# print(all_link)
+	results = getInfo(all_link, phonenum)
+	print(results)
