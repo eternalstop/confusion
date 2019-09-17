@@ -18,8 +18,8 @@ def get_fruit_list(token):
 def login(username, password):
 	token_link = "http://fruits.eternalstop.com:7788/api-token-auth/"
 	params = {
-	    "username": username,
-	    "password": password,
+		"username": username,
+		"password": password,
 	}
 	
 	reponse = requests.post(token_link, data=params)
