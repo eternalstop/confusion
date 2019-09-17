@@ -1,15 +1,21 @@
 # _*_coding:utf-8_*_
 import requests
-import json
 
 
-fruits_link = "http://fruits.eternalstop.com:7788/fruit/"
+def get_fruit_list(token):
+	fruits_link = "http://fruits.eternalstop.com:7788/fruit/"
+	header = {
+		"Authorization": 'JWT ' + token
+	}
+	reponse = requests.get(fruits_link, headers=header)
+	if reponse.status_code == 401:
+		return "Error"
+	else:
+		results = requests.get(fruits_link, headers=header).json()["results"]
+		return results
 
 
 def login(username, password):
-	header = {
-		"Authorization": ''
-	}
 	token_link = "http://fruits.eternalstop.com:7788/api-token-auth/"
 	params = {
 	    "username": username,
@@ -17,9 +23,10 @@ def login(username, password):
 	}
 	
 	reponse = requests.post(token_link, data=params)
-	header["Authorization"] = "JWT " + reponse.json()["token"]
-	print(requests.get(fruits_link, headers=header).json())
+	token = reponse.json()["token"]
+	return token
 
 
 if __name__ == '__main__':
-	login(username="liang", password="Missy@u777")
+	getoken = login(username="admin", password="Missy@u777")
+	print(get_fruit_list(getoken))
