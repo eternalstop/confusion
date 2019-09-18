@@ -34,32 +34,6 @@ def getAllOrder(url, phone):
 	return link_list
 
 
-def getInfo(link, phone):
-	info_list = []
-	headers = {
-		"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-		"Accept-Encoding": "gzip,deflate",
-		"Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-		"Connection": "keep-alive",
-		# "Host": "fzxzgy.dh.cx",
-		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
-	}
-	for url in link:
-		info_dict = {}
-		soup = getHtml(url=url, headers=headers)
-		compony = soup.find_all('span', attrs={"id": "result-company"})[0].a.contents[0]
-		content = soup.find_all('ul', attrs={"class": "list-inline"})[0]
-		all_info = content.find_all('li')
-		for info in all_info:
-			info_dict[info.strong.contents[0]] = info.contents[1].strip("：").strip()
-		info_dict["链接"] = url
-		info_dict["快递公司"] = compony
-		info_dict["电话"] = phone
-		info_list.append(info_dict)
-		time.sleep(1)
-	return info_list
-		
-
 def getLink(apilist):
 	link_list = []
 	headers = {
@@ -82,13 +56,50 @@ def getLink(apilist):
 	return link_list
 
 
+# def getCompany(number):
+# 	check_api = "http://apis.dh.cx/query/json"
+# 	headers = {
+# 		"Content-Type": "application/json; charset=UTF-8",
+# 		"X-Requested-With": "XmlHttpRequest",
+# 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+# 	}
+# 	params = {
+# 		"data": "no=" + number + "&company=" + "unknown"
+# 	}
+# 	response = requests.post(check_api, headers=headers, data=json.dumps(params))
+# 	print(response.json())
+
+
+def getInfo(link, phone):
+	info_list = []
+	localtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+	headers = {
+		"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+		"Accept-Encoding": "gzip,deflate",
+		"Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+		"Connection": "keep-alive",
+		# "Host": "fzxzgy.dh.cx",
+		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
+	}
+	for url in link:
+		info_dict = {}
+		soup = getHtml(url=url, headers=headers)
+		content = soup.find_all('ul', attrs={"class": "list-inline"})[0]
+		all_info = content.find_all('li')
+		for info in all_info:
+			info_dict[info.strong.contents[0]] = info.contents[1].strip("：").strip()
+		info_dict["链接"] = url
+		info_dict["电话"] = phone
+		info_dict["上次查询时间"] = localtime
+		info_list.append(info_dict)
+	return info_list
+
+
 if __name__ == '__main__':
 	# test_link = ['http://fzxzgy.dh.cx/c2d52/18655660717/0']
-	check_api = "http://apis.dh.cx/query/json"
 	home_url = "http://fzxzgy.dh.cx/"
 	phonenum = '18655660717'
 	all_api = getAllOrder(home_url, phonenum)
 	all_link = getLink(all_api)
-	# print(all_link)
-	results = getInfo(all_link, phonenum)
-	print(results)
+	data = getInfo(all_link, phonenum)
+	print(data)
