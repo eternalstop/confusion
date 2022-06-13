@@ -17,7 +17,6 @@ try:
         for one_file in file_list:
             # xlsx to csv
             file_end = one_file.split(".")[1]
-
             if file_end == "xlsx":
                 csv_name = path_name + "\\" + one_file.split(".")[0] + ".csv"
                 new_name = path_name + "\\" + one_file.split(".")[0][0:13] + ".csv"

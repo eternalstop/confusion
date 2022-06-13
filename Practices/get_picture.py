@@ -20,7 +20,7 @@ def get_gray(x, y):
 
 def get_ascii_char():
 	char_str = ''
-	for num in xrange(32, 127):
+	for num in range(32, 127):
 		char_str += chr(num)
 	char_list = list(char_str)
 	return char_list

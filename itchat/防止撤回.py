@@ -26,8 +26,7 @@ def ClearTimeOutMsg():
 
 # 将接收到的消息存放在字典中，当接收到新消息时对字典中超时的消息进行清理
 # 没有注册note（通知类）消息，通知类消息一般为：红包 转账 消息撤回提醒等，不具有撤回功能
-@itchat.msg_register([TEXT, PICTURE, MAP, CARD, SHARING, RECORDING, ATTACHMENT, VIDEO, FRIENDS], isFriendChat=True,
-                     isGroupChat=True)
+@itchat.msg_register([TEXT, PICTURE, MAP, CARD, SHARING, RECORDING, ATTACHMENT, VIDEO, FRIENDS], isFriendChat=True, isGroupChat=True)
 def Revocation(msg):
 	mytime = time.localtime()  # 这儿获取的是本地时间
 	# 获取用于展示给用户看的时间 2017/03/03 13:23:53
@@ -54,9 +53,7 @@ def Revocation(msg):
 	elif msg['Type'] == 'Card':
 		msg_content = msg['RecommendInfo']['NickName'] + r" 的名片"
 	elif msg['Type'] == 'Map':
-		x, y, location = re.search("<location x=\"(.*?)\" y=\"(.*?)\".*label=\"(.*?)\".*", msg['OriContent']).group(1,
-		                                                                                                            2,
-		                                                                                                            3)
+		x, y, location = re.search("<location x=\"(.*?)\" y=\"(.*?)\".*label=\"(.*?)\".*", msg['OriContent']).group(1, 2, 3)
 		if location is None:
 			msg_content = r"纬度->" + x.__str__() + " 经度->" + y.__str__()
 		else:
@@ -79,8 +76,7 @@ def Revocation(msg):
 	# 更新字典
 	# {msg_id:(msg_from,msg_time,msg_time_touser,msg_type,msg_content,msg_url)}
 	msg_dict.update(
-		{msg_id: {"msg_from": msg_from, "msg_group": msg_group, "msg_time": msg_time, "msg_time_touser": msg_time_touser, "msg_type": msg_type,
-		          "msg_content": msg_content, "msg_url": msg_url}})
+		{msg_id: {"msg_from": msg_from, "msg_group": msg_group, "msg_time": msg_time, "msg_time_touser": msg_time_touser, "msg_type": msg_type, "msg_content": msg_content, "msg_url": msg_url}})
 	# 清理字典
 	ClearTimeOutMsg()
 

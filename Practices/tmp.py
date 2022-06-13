@@ -126,7 +126,7 @@ def test_factorial(x):
 	return value
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 	# tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 	# # print(tmp_list[::-1])
 	# matrix = [
@@ -136,7 +136,7 @@ if __name__ == '__main__':
 	# 	[0, 1, 2, 3]
 	# ]
 	# a = 1 > 0
-	print(test_factorial(3))
+	# print(test_factorial(3))
 # tmplist = [1, 2, 3, 4, 5]
 # e1 = enumerate(tmplist, 4)
 # for i in e1:
@@ -145,3 +145,9 @@ if __name__ == '__main__':
 # m = re.findall(r'.*$', s)
 # if m:
 # 	print(m)
+
+import datetime
+result = datetime.date.today() - datetime.date(2021, 2, 22)
+print(print(result.days))
+# print(datetime.date(2021, 2, 22))
+

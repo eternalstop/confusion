@@ -1,0 +1,77 @@
+{
+  "action": "create_flow",
+  "data": {
+    "Game": "sao",
+    "Env": "prod",
+    "Resources": {
+      "Instances": [],
+      "Redis": [],
+      "Database": [],
+      "Listener": []
+    },
+    "Actions": {
+      "bind_server": [
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12121",
+          "port": 12121,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12122",
+          "port": 12122,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12123",
+          "port": 12123,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12124",
+          "port": 12124,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12125",
+          "port": 12125,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12126",
+          "port": 12126,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12127",
+          "port": 12127,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12128",
+          "port": 12128,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12129",
+          "port": 12129,
+          "weight": 10
+        },
+        {
+          "instance_group": "bili-s8-gs-group",
+          "listener_group": "s8-listener-12130",
+          "port": 12130,
+          "weight": 10
+        }
+      ]
+    }
+  }
+}

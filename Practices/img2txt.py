@@ -58,5 +58,5 @@ def get_identify(image):
 
 
 if __name__ == "__main__":
-	source = r'D:\图片\微信图片_20180815102544.png'
+	source = r'D:\图片\QQ图片20210603182101.png'
 	print(get_identify(source))

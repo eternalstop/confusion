@@ -20,11 +20,13 @@ def store_passwd(db):
 
 	pid = input('Enter Mark: ')
 	pid = pid.lower()
-	passwd_dic = {'sign': input('Enter sign: '),
-	              'user': input('Enter user: '),
-	              'passwd': input('Enter passwd: '),
-	              'email': input('Enter email: '),
-	              'phone': input('Enter phone: ')}
+	passwd_dic = {
+		'sign': input('Enter sign: '),
+		'user': input('Enter user: '),
+		'passwd': input('Enter passwd: '),
+		'email': input('Enter email: '),
+		'phone': input('Enter phone: ')
+	}
 	db[pid] = passwd_dic
 
 

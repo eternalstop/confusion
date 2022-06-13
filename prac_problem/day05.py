@@ -13,4 +13,3 @@ for cock in range(0, 21):
 			if (chick % 3 == 0) & (cock + hen + chick == 100) & (cock * 5 + hen * 3 + chick // 3 == 100):
 				print("方案%s: 翁 %s 只，母 %s 只，雏 %s 只" % (plan, cock, hen, chick))
 				plan += 1
-

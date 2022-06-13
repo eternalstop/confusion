@@ -2,7 +2,7 @@
 # coding=utf-8
 
 import sys
-from PyQt4 import QtGui
+from PyQt6 import QtGui
 
 
 def main():
