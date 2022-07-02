@@ -6,7 +6,10 @@
 big_month = [1, 3, 5, 7, 8, 10, 12]
 
 
+<<<<<<< HEAD
 # 闰年判断
+=======
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 def judge_year(y):
 	if (y % 4 == 0) & (y % 400 != 0) | (y % 400 == 0):
 		return 1
@@ -14,10 +17,15 @@ def judge_year(y):
 		return 0
 
 
+<<<<<<< HEAD
 # 计算天数
 def get_day(y, m, d):
 	judge = judge_year(y)
 	# 判断是否为2月
+=======
+def get_day(y, m, d):
+	judge = judge_year(y)
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 	if judge:
 		month_2 = 29
 	else:
@@ -34,7 +42,10 @@ def get_day(y, m, d):
 	return fin_day
 
 
+<<<<<<< HEAD
 # 截取年、月、日
+=======
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 def get_data(data):
 	y = int(data.split("年")[0])
 	m = int(data.split("年")[1].split("月")[0])

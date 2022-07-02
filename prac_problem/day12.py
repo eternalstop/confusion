@@ -2,6 +2,7 @@
 # coding=utf-8
 """
 输出杨辉三角
+<<<<<<< HEAD
 """
 
 
@@ -16,3 +17,6 @@ for j in triangles():
     print(j)
     if len(j) > 10:
         break
+=======
+"""
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9

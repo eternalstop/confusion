@@ -2,6 +2,10 @@
 import random
 import csv
 import time
+<<<<<<< HEAD
+=======
+import pandas as pd
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 
 
 def play():
@@ -46,6 +50,11 @@ def ball_judge(file='play.csv'):
 
 if __name__ == '__main__':
 	dic = play()
+<<<<<<< HEAD
 	print(dic)
 	# judge = ball_judge('play.csv')
 	# w_csv(dic, judge)
+=======
+	judge = ball_judge('play.csv')
+	w_csv(dic, judge)
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9

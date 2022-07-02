@@ -22,7 +22,13 @@ def linear_model_main(X_parameters, Y_parameters, predict_value):
 	regr = linear_model.LinearRegression()
 	regr.fit(X_parameters, Y_parameters)
 	predict_outcome = regr.predict(predict_value) // 1
+<<<<<<< HEAD
 	predictions = {'intercept': regr.intercept_, 'coefficient': regr.coef_, 'predicted_value': predict_outcome}
+=======
+	predictions = {'intercept': regr.intercept_,
+	               'coefficient': regr.coef_,
+	               'predicted_value': predict_outcome}
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 	return predictions
 
 

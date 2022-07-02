@@ -126,7 +126,11 @@ def test_factorial(x):
 	return value
 
 
+<<<<<<< HEAD
 # if __name__ == '__main__':
+=======
+if __name__ == '__main__':
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 	# tmp_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 	# # print(tmp_list[::-1])
 	# matrix = [
@@ -136,7 +140,11 @@ def test_factorial(x):
 	# 	[0, 1, 2, 3]
 	# ]
 	# a = 1 > 0
+<<<<<<< HEAD
 	# print(test_factorial(3))
+=======
+	print(test_factorial(3))
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 # tmplist = [1, 2, 3, 4, 5]
 # e1 = enumerate(tmplist, 4)
 # for i in e1:
@@ -144,6 +152,7 @@ def test_factorial(x):
 # s = 'ABCD'
 # m = re.findall(r'.*$', s)
 # if m:
+<<<<<<< HEAD
 # 	print(m)
 
 import datetime
@@ -151,3 +160,6 @@ result = datetime.date.today() - datetime.date(2021, 2, 22)
 print(print(result.days))
 # print(datetime.date(2021, 2, 22))
 
+=======
+# 	print(m)
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9

@@ -11,7 +11,10 @@ import math
 category_list = ['等边三角形', '等腰三角形', '直角三角形', '普通三角形']
 
 
+<<<<<<< HEAD
 # 判断三角形合法性
+=======
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 def judge(a, b, c):
 	three = [a, b, c]
 	three.sort()
@@ -21,7 +24,10 @@ def judge(a, b, c):
 		return 0
 
 
+<<<<<<< HEAD
 # 判断三角形类型
+=======
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 def category(a, b, c):
 	t_list = [a, b, c]
 	t_list.sort()
@@ -35,7 +41,10 @@ def category(a, b, c):
 		return 3
 
 
+<<<<<<< HEAD
 # 计算三角形面积
+=======
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 def acreage(a, b, c):
 	p = (a + b + c) / 2
 	t_acreage = math.sqrt(p * (p - a) * (p - b) * (p - c))

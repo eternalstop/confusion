@@ -13,4 +13,8 @@ result = int(x) ** int(y) % 1000
 if result < 100:
 	print("%s的%s次方的后三位是0%d" % (x, y, result))
 else:
+<<<<<<< HEAD
 	print("%s的%s次方的后三位是%d" % (x, y, result))
+=======
+	print("%s的%s次方的后三位是%d" % (x, y, result))
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9

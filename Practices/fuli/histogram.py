@@ -14,7 +14,11 @@ def get_blue_data(file_name):
 		13: 0, 14: 0, 15: 0, 16: 0,
 	}
 	for period, value in zip(data['periods'], data['ball']):
+<<<<<<< HEAD
 		blue_count[value] = blue_count[value] + 1
+=======
+			blue_count[value] = blue_count[value] + 1
+>>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 	return blue_count
 
 
