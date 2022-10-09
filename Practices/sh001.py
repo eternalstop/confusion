@@ -36,9 +36,9 @@ def send_msg(msg="测试内容，接口可能出错", shoesName="SH001", shoesCo
         "template":"json"
         }
     msg_body = json.dumps(msg_data).encode(encoding='utf-8')
-    # print(msg_body)
+    print(msg_body)
     send_result = requests.post(send_url,data=msg_body,headers=send_headers)
-    # print(send_result.status_code, send_result.content)
+    print(send_result.status_code, send_result.content)
 
 
 try:
@@ -56,6 +56,7 @@ try:
         for shoes in info['shoesList']:
             shoes_date = datetime.date(year, int(shoes['shoes_date'].split('.')[0]), int(shoes['shoes_date'].split('.')[1]))
             result = shoes_date - today
+            print(result)
             # 提前两天开始发短信，时间为10:00-18:00
             if result.days == 2:
                 print('{}: {}+{}+{}+{}({})'.format(shoes['shoes_name'], shoes['shoes_code'], "王 亮", "34086811", "42.0", shoes['shoes_size']))
