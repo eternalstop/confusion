@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cloud_resource_template/.idea/cloud_resource_template.iml" filepath="$PROJECT_DIR$/../cloud_resource_template/.idea/cloud_resource_template.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/confusion.iml" filepath="$PROJECT_DIR$/.idea/confusion.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../文档/ProjectDoc/work-normal/.idea/work-normal.iml" filepath="$PROJECT_DIR$/../../文档/ProjectDoc/work-normal/.idea/work-normal.iml" />
     </modules>

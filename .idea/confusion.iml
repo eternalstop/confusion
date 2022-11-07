@@ -5,6 +5,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="work-normal" />
+    <orderEntry type="module" module-name="cloud_resource_template" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

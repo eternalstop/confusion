@@ -4,3 +4,4 @@ out
 gen
 .gitlab-ci.yaml
 */.DS_Store
+.vscode/
