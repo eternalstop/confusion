@@ -5,3 +5,4 @@ gen
 .gitlab-ci.yaml
 */.DS_Store
 .vscode/
+.test/
