@@ -44,4 +44,5 @@ def play():
 
 if __name__ == "__main__":
     ball_dict = play()
-    send_msg(ball_dict)
+    print(ball_dict)
+    # send_msg(ball_dict)
