@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="work-normal" />
     <orderEntry type="module" module-name="cloud_resource_template" />
+    <orderEntry type="module" module-name="spoiler-recog" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

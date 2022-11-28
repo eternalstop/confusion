@@ -2,7 +2,6 @@ import ffmpy3
 import os
 
 
-
 def video2img(infile, outdir="./"):
     output_dir = outdir  + "\\input\\" + '%4d.jpeg'
     ff = ffmpy3.FFmpeg(
@@ -37,8 +36,19 @@ def img2anime(input_dir, output_dir):
     from modelscope.utils.constant import Tasks
 
     # 方法1：:每张图片调用一次pipline
-    img_cartoon = pipeline(Tasks.image_portrait_stylization, 
-                model='damo/cv_unet_person-image-cartoon_compound-models',)
+    img_cartoon = pipeline(
+        Tasks.image_portrait_stylization,
+        # 人像卡通化模型
+        # model='damo/cv_unet_person-image-cartoon_compound-models',
+        # 人像卡通化模型-3D
+        # model='damo/cv_unet_person-image-cartoon-3d_compound-models',
+        # 人像卡通化模型-素描
+        # model='damo/cv_unet_person-image-cartoon-sketch_compound-models',
+        # 人像卡通化模型-手绘风
+        # model='damo/cv_unet_person-image-cartoon-handdrawn_compound-models',
+        # 人像卡通化模型-艺术风
+        model='damo/cv_unet_person-image-cartoon-artstyle_compound-models',
+    )
     for img in imgs_list:
         frame = cv2.imread(input_dir + "\\" + img)
         result = img_cartoon(frame)

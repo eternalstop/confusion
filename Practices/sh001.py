@@ -29,9 +29,9 @@ def send_msg(msg="测试内容，接口可能出错", shoesName="SH001", shoesCo
         }
 
     msg_data = {
-        "token":"0f5b680c7cf549148dd18a12f2e6bc3d",
-        "title":"上海001抽签提醒",
-        "content":msgContent,
+        "token": "0f5b680c7cf549148dd18a12f2e6bc3d",
+        "title": "上海001抽签提醒",
+        "content": msgContent,
         "topic": "7700",
         "template":"json"
         }
