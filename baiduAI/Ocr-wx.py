@@ -29,8 +29,8 @@ class SiteLog(wx.Frame):
 
     def get_contents(self, event):
         APP_ID = '11678143'
-        API_KEY = 'HdFOqrkZGddbKAshqprIyGgp'
-        SECRET_KEY = '5l5WuwO18xwzvhGTdh26HCDNaXIXShI3'
+        API_KEY = '***'
+        SECRET_KEY = '***'
         my_client = AipOcr(appId=APP_ID, apiKey=API_KEY, secretKey=SECRET_KEY)
         options = {"detect_direction": "true", "probability": "false"}
         try:

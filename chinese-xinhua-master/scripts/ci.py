@@ -6,10 +6,12 @@ description: 多线程抓取下载词语并保存
 
 """
 
-import requests, csv
+import requests
+import csv
 from bs4 import BeautifulSoup
 import time
 from multiprocessing.dummy import Pool as ThreadPool
+
 
 def downloader(url):
     """
@@ -34,9 +36,17 @@ def downloader(url):
             print(f'{[words[i]]} is parsing')
 
             try:
-                response  = requests.get(words[i])
-                wordhtml = BeautifulSoup(response.content.decode('gbk', errors='ignore').replace('<br/>', '\n').replace('<br>', '\n')\
-                            , "lxml")
+                response = requests.get(words[i])
+                wordhtml = BeautifulSoup(response.content.decode(
+                    'gbk',
+                    errors='ignore'
+                ).replace(
+                    '<br/>',
+                    '\n'
+                ).replace(
+                    '<br>',
+                    '\n'
+                ), "lxml")
                 td = wordhtml.find_all('table')[5].find_all('td')
                 res.append([td[0].text.strip(), td[1].text.strip()])
      
@@ -55,6 +65,7 @@ def downloader(url):
         csv.writer(csv_file).writerows(res)
     
     return len(res)
+
 
 if __name__ == '__main__':
     start_time = time.time()

@@ -8,8 +8,10 @@ description: 抓取下载汉字并保存
 
 """
 
-import requests,json
+import requests
+import json
 from bs4 import BeautifulSoup
+
 
 def downloader(url):
     """
@@ -48,6 +50,7 @@ def downloader(url):
                     'explanation': explanation[explanation.find('\r\n'):].strip(),\
                     'more': td[14].text.strip()})
     return res
+
 
 if __name__ == '__main__':
     res = downloader('http://www.zd9999.com/zi/index.htm')

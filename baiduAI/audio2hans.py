@@ -5,8 +5,8 @@ from tinytag import TinyTag
 """百度APPID  AK  SK"""
 
 APP_ID = "16219594"
-API_KEY = "n9cG4TPbYhxwcONpG1wkQ6XG"
-SECRET_KEY = "EVhgOsnZTjb0W31VIV1kiRCvcpnPp7N4"
+API_KEY = "***"
+SECRET_KEY = "***"
 
 client = AipSpeech(appId=APP_ID, apiKey=API_KEY, secretKey=SECRET_KEY)
 
