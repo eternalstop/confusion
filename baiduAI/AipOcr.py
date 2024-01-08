@@ -1,17 +1,14 @@
 #!/usr/local/python3/bin/python
 # coding=utf-8
-<<<<<<< HEAD
 import requests
 import requests
 import base64
-=======
 from aip import AipOcr
->>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 
 
 # 百度ocr-python文档：https://cloud.baidu.com/doc/OCR/OCR-Python-SDK.html
 
-<<<<<<< HEAD
+
 # client_id 为官网获取的AK， client_secret 为官网获取的SK
 def get_token():
     host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=HdFOqrkZGddbKAshqprIyGgp&client_secret=5l5WuwO18xwzvhGTdh26HCDNaXIXShI3'
@@ -52,11 +49,11 @@ if __name__ == '__main__':
     file = r"D:\图片\QQ图片20210603182101.png"
     data = get_content(file)
     print(data)
-=======
+
 def get_txt(img):
-	APP_ID = '11678143'
-	API_KEY = 'HdFOqrkZGddbKAshqprIyGgp'
-	SECRET_KEY = '5l5WuwO18xwzvhGTdh26HCDNaXIXShI3'
+	APP_ID = '***'
+	API_KEY = '***'
+	SECRET_KEY = '***'
 	my_client = AipOcr(appId=APP_ID, apiKey=API_KEY, secretKey=SECRET_KEY)
 
 	options = {"detect_direction": "true", "probability": "false"}
@@ -75,4 +72,3 @@ if __name__ == '__main__':
 	results_list = results['words_result']
 	for i in results_list:
 		print(i['words'])
->>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9

@@ -4,11 +4,12 @@
 
 import shelve
 import random
+import string
 
 
-def random_password(digit):
-	aggregate = "123456789!@#$%^&*.,;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	password = random.choice(aggregate, digit)
+def random_password(length):
+	aggregate = "0123456789!@#$%^&*.,;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	password = random.sample(aggregate, length)
 	random.shuffle(password)
 	return password
 
@@ -20,7 +21,6 @@ def store_passwd(db):
 
 	pid = input('Enter Mark: ')
 	pid = pid.lower()
-<<<<<<< HEAD
 	passwd_dic = {
 		'sign': input('Enter sign: '),
 		'user': input('Enter user: '),
@@ -28,13 +28,6 @@ def store_passwd(db):
 		'email': input('Enter email: '),
 		'phone': input('Enter phone: ')
 	}
-=======
-	passwd_dic = {'sign': input('Enter sign: '),
-	              'user': input('Enter user: '),
-	              'passwd': input('Enter passwd: '),
-	              'email': input('Enter email: '),
-	              'phone': input('Enter phone: ')}
->>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 	db[pid] = passwd_dic
 
 

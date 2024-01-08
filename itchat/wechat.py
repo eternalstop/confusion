@@ -70,17 +70,15 @@ def group_reply(msg):
 	print(msg['Text'][-1])
 	temp_str = msg['Text'][-1]
 
-<<<<<<< HEAD
+
 	# if group_name == 'test' and from_user == '我是我':
-	if group_name == 'test' and from_user == 'ali777':
-=======
+	# if group_name == 'test' and from_user == 'ali777':
+
 	if group_name == '张店长和他的伙计们' and from_user == '倩酱粉丝后援团团长':
->>>>>>> b01c862ce99a29806808ae156c6d9774bfc2a0b9
 		# itchat.send("test from group %s from user %s" % (group_name, from_user), toUserName=group_id)
 		send_msg = get_chengyu(temp_str)
 		if send_msg != "Null":
 			itchat.send(send_msg, toUserName=group_id)
-
 
 itchat.auto_login(True)
 itchat.run()

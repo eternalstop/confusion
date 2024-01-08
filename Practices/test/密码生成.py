@@ -6,18 +6,25 @@ import wx
 
 
 def password(event):
+    if lenth.GetValue().isdigit():
+        passwd_length = lenth.GetValue()
+    else:
+        passwd_length = 8
     try:
-        passwd = ''.join(random.sample(string.digits + string.ascii_lowercase + string.ascii_uppercase + string.punctuation, int(lenth.GetValue())))
+        passwd = ''.join(random.sample(
+            string.digits + string.ascii_letters + string.punctuation,
+            int(passwd_length)
+        ))
         contents.SetValue(passwd)
     except:
         contents.SetValue('请输入正确的密码长度，最长94位。')
 
 
 app = wx.App()
-win = wx.Frame(None, title="随机密码", size=(500, 200))
+win = wx.Frame(None, title="随机密码", size=(700, 350))
 bkg = wx.Panel(win)
 
-lenth = wx.TextCtrl(bkg, value='长度最长94位')
+lenth = wx.TextCtrl(bkg, value='请输入要生成的密码位数，默认8位，长度最长94位', style=wx.TE_CENTER)
 contents = wx.TextCtrl(bkg, style=wx.TE_MULTILINE | wx.HSCROLL)
 getButton = wx.Button(bkg, label='生成密码')
 getButton.Bind(wx.EVT_BUTTON, password)
@@ -31,7 +38,6 @@ v_box.Add(contents, proportion=1, flag=wx.EXPAND | wx.LEFT | wx.BOTTOM | wx.RIGH
 
 bkg.SetSizer(v_box)
 win.Show()
-
 
 if __name__ == '__main__':
     app.MainLoop()

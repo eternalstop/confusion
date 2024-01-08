@@ -1,9 +1,9 @@
 ﻿from PIL import Image  # 导入PIL库
 import numpy as np     # 导入numpy
 
-a = (np.array(Image.open("D:\\图片\\123.jpg").convert('L')).astype('float'))
+a = (np.array(Image.open(r"D:\\图片\\Snipaste\Snipaste_20231201-151953.png").convert('L')).astype('float'))
 
-depth = 2.            # 范围时0~100 可以用来控制图片颜色深度
+depth = 10.            # 范围时0~100 可以用来控制图片颜色深度
 grad = np.gradient(a)
 grad_x, grad_y = grad
 grad_x = grad_x*depth/100.
